@@ -484,7 +484,7 @@
     <div class="row mt-5">
       <div class="col-md-6" data-aos="fade-right">
         <h4 class="mb-3">Send me a message</h4>
-        <form id="contactForm">
+        <form  id="contactForm">
           <div class="mb-3">
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control" id="name" required>
@@ -503,12 +503,15 @@
           </div>
           <button type="submit" class="btn btn-primary">Send</button>
         </form>
+        <div id="successMessage" class="alert alert-success mt-3 d-none">
+          ✅ Your message has been prepared successfully!
+        </div>
       </div>
       <div class="col-md-6" data-aos="fade-left">
         <h4 class="mb-3">Contact Information</h4>
         <div class="contact-info">
           <p><i class="fas fa-envelope me-2"></i> mohamedkab2006@gmail.com</p>
-          <p><i class="fas fa-phone me-2"></i> +212 6XX XXX XXX</p>
+          <p><i class="fas fa-phone me-2"></i> +212 657 579 485</p>
           <p><i class="fas fa-map-marker-alt me-2"></i> Marrakech, Morocco</p>
           <p><i class="fas fa-clock me-2"></i> Available Monday to Friday</p>
         </div>
@@ -662,5 +665,41 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 </script>
+<script>
+  document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let subject = document.getElementById("subject").value;
+    let message = document.getElementById("message").value;
+
+    let phoneNumber = "212675759485"; // بدّل برقمك
+
+    let whatsappMessage =
+      `👤 Name: ${name}%0A` +
+      `📧 Email: ${email}%0A` +
+      `📌 Subject: ${subject}%0A` +
+      `💬 Message: ${message}`;
+
+    let whatsappURL = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
+
+    // فتح WhatsApp
+    window.open(whatsappURL, "_blank");
+
+    // success animation
+    let successMsg = document.getElementById("successMessage");
+    successMsg.classList.remove("d-none");
+
+    setTimeout(() => {
+      successMsg.classList.add("show");
+    }, 100);
+
+    // reset form
+    document.getElementById("contactForm").reset();
+  });
+</script>
+
+
 </body>
 </html>

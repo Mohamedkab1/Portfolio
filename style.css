@@ -250,3 +250,14 @@
     .skill-soft-card .card-body {
       padding: 1.5rem 1rem;
     }
+
+    #successMessage {
+       opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.5s ease;
+    }
+
+    #successMessage.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
